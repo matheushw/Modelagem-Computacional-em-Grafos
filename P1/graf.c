@@ -4,7 +4,7 @@
 *   NUSP: 11208238
 */
 
-#include <stdio.h>
+#include "graf.h"
 
 int main () {
 
@@ -12,20 +12,13 @@ int main () {
 
     scanf("%d %d", &n,&m); //Lendo os inteiros "n" e "m".
 
-    int mat[n][n]; //Criando a matriz de adjacência.
-
-    for (int i=0;i<n;i++){  
-        for (int j=0;j<n;j++){
-            mat[i][j] = 0; //Inicializando a matriz de adjacência com todos os valores zerados.
-        }
-    }
+    Grafo* grafo = inicializar(n, n); //Inicializando o grafo.
 
     int u,v; //Criando inteiros para armazenar os vértices a serem ligados.
 
     for (int i=0;i<m;i++){
         scanf("%d %d", &u,&v); //Lendo os vértices "u" e "v".
-        mat[u][v] = 1; //Criando uma aresta que vai do vértice "u" até o "v".
-        mat[v][u] = 1; //Reciprocidade.
+        ligar_vertices(grafo, u ,v); //Ligando vertices "u" e "v".
     }
 
     int q; //Criando um inteiro para armazenar a quantidade de operações a serem executadas.
@@ -38,23 +31,19 @@ int main () {
 
         if (qi == 1){
             scanf("%d %d", &u,&v); //Lendo os vértices "u" e "v" a serem ligados.
-            mat[u][v] = 1; //Criando uma aresta que vai do vértice "u" até o "v".
-            mat[v][u] = 1; //Reciprocidade.
+            ligar_vertices(grafo, u ,v); //Ligando vértices "u" e "v".
 
         } else if (qi == 2) {
             scanf("%d %d", &u,&v); //Lendo os vértices "u" e "v" a serem desconectados.
-            mat[u][v] = 0; //Excluindo a aresta que vai do vértice "u" até o "v".
-            mat[v][u] = 0; //Reciprocidade.
+            desligar_vertices(grafo, u, v); //Retirar ligação entre dois vértices.
         } else if (qi == 3) {
-            for (int j=0;j<n;j++){
-                for (int z=0;z<n;z++){
-                    printf("%d ", mat[j][z]); //Imprimindo a matriz de adjacência.
-                }
-                printf("\n"); //Imprimindo quebra de linha no final de cada linha da matriz.
-            }
+            print_grafo(grafo); //Imprimir a matriz de adjacência.
             printf("\n"); //Imprimindo quebra de linha adicional.
         }
     }
+
+    free(grafo);
+    grafo = NULL;
 
     return 0; //Sucesso :)
 }
