@@ -4,7 +4,9 @@
 *   NUSP: 11208238
 */
 
-#include "graf.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "Estrutura.h"
 
 int main () {
 

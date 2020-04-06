@@ -3,15 +3,10 @@
 *   Aluno: Matheus Barcellos de Castro Cunha
 *   NUSP: 11208238
 */
+
 #include <stdio.h>
 #include <stdlib.h>
-
-#define MAXN 1010
-
-typedef struct { //TAD Grafo.
-    int mat[MAXN][MAXN];
-    int lin,col;
-} Grafo;
+#include "Estrutura.h"
 
 Grafo* inicializar (int x, int y) { //Inicializando a matriz de adjacência.
     Grafo* a = (Grafo*) malloc(sizeof(Grafo));
