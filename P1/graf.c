@@ -32,7 +32,6 @@ int main () {
         if (qi == 1){
             scanf("%d %d", &u,&v); //Lendo os vértices "u" e "v" a serem ligados.
             ligar_vertices(grafo, u ,v); //Ligando vértices "u" e "v".
-
         } else if (qi == 2) {
             scanf("%d %d", &u,&v); //Lendo os vértices "u" e "v" a serem desconectados.
             desligar_vertices(grafo, u, v); //Retirar ligação entre dois vértices.
